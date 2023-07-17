@@ -1,0 +1,93 @@
+<body class="bg-body-primary p-2" style="margin-top: 20px;">
+  <div class="container-lg">
+    <form class="d-flex col-12 justify-content-center" role="search">
+      <input class="form-control me-2" type="search" placeholder="Procurar Pokémon.." aria-label="Search-Pokémon" />
+      <button class="btn  btn-primary white" type="submit">Pesquisar</button>
+    </form>
+    <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="commentModalLabel" style="color: rgb(1, 1, 81)">
+              Adicionar comentário
+            </h5>
+            <button type="button" class="btn-close btn" style="background: none;" data-bs-dismiss=" modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="row-xs-0 modal-body gap-3 d-grid">
+            <div class="col-md-12">
+              <input type="text" style=" border: 1px solid #d5d2d2; border-radius: 10px; padding: 5px;"
+                placeholder=" Nome" class="w-100" id="commentName" />
+            </div>
+            <div class="col-md-12">
+              <textarea placeholder="Comentário" style=" border: 1px solid #d5d2d2; border-radius: 10px; padding: 5px;"
+                name="Comentário" id="comment" cols="30" class="w-100" rows="10"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="submitComment()">
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3" style="max-width: 1500px; margin-top: 2%; padding: 10px; border: none; -webkit-box-shadow: 0px 0px 192px -17px rgba(230,230,230,1);
+    -moz-box-shadow: 0px 0px 192px -17px rgba(230,230,230,1);
+    box-shadow: 0px 0px 192px -17px rgba(230,230,230,1);" *ngFor="let pokemon of pokemonList$ | async; index as i">
+      <div class="row g-0">
+        <div class="col-md-4" style="display: flex; justify-content: center; width: 200px;">
+          <img width="120px" height="120px" src="{{ pokemon.characteristics.sprites.front_default }}"
+            class="img-fluid rounded-start" alt="..." />
+        </div>
+        <div class="col-md-4">
+          <div class="card-body">
+            <h5 class="card-title" style="color: rgb(1, 1, 81); font-size: 30px;">
+              {{ pokemon.name }}
+              <button class="btn btn-light" style="background: none; border: none; color: #1e00006f; font-size: 14px;"
+                [routerLink]="['/details']" [queryParams]="{ name: pokemon.name }">
+                Ver detalhes
+              </button>
+            </h5>
+            <p style="font-size: 14px; color: rgba(0, 0, 0, 0.591);" *ngIf="!pokemon.comment?.comment">Sem comentário
+              adicionado</p>
+            <p *ngIf="pokemon.comment?.comment">
+              Comentário adicionado: {{ pokemon.comment?.comment }}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class="card-body">
+            <p style="color: rgba(0, 0, 0, 0.591); ">
+              Peso: {{ (pokemon.characteristics.weight / 10).toFixed(1) }} kg
+            </p>
+            <p style="color: rgba(0, 0, 0, 0.591);">Altura: {{ pokemon.characteristics.height * 10 }} cm</p>
+            <div class="btn-group button column d-flex" style="gap: 10px">
+              <button type="button" class="btn btn-primary"
+                style="width: 120px; height: 40px; border-radius: 20px; font-size: 12px;" data-toggle="modal"
+                data-target="#modalComentario" (click)="openCommentsModal(pokemon)">
+                Adicionar comentário
+              </button>
+              <button type="button btn " class="btn btn-danger"
+                style="width: 120px; height: 40px; border-radius: 20px; font-size: 12px;"
+                (click)="deleteComment(pokemon)">
+                Excluir comentário
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item " (click)="previousPage()">
+        <a class="page-link">Voltar</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="nextPage()">Avançar</a>
+      </li>
+    </ul>
+  </footer>
+</body>

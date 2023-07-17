@@ -3,21 +3,35 @@ export type Pokemon = {
   url: string;
 };
 
-export type Description = {
-  description: string;
-  language: {
-    name: string;
-    url: string;
+export type Characteristics = {
+  height: number;
+  weight: number;
+  abilities: {
+    ability: {
+      name: string;
+      url: string;
+    };
+  }[];
+  moves: {
+    move: {
+      name: string;
+      url: string;
+    };
+  }[];
+  sprites: {
+    front_default: string;
+    front_shiny: string;
+    back_default: string;
+    back_shiny: string;
   };
 };
 
-export type PokemonCharacteristics = {
-  gene_modulo: number;
-  possible_values: number;
-  descriptions: Array<Description>;
-};
-
 export type PokemonWithCharacteristics = Pokemon & {
-  characteristics: PokemonCharacteristics;
-  englishDescription: string;
+  characteristics: Characteristics;
+  comment:
+    | {
+        name: string;
+        comment: string;
+      }
+    | undefined;
 };

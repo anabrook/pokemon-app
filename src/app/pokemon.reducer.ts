@@ -5,7 +5,7 @@ import {
   increaseOffset,
   decreaseOffset,
 } from './pokemon.actions';
-import { PokemonWithCharacteristics } from 'src/types/Pokemon';
+import { PokemonWithCharacteristics } from '../types/Pokemon';
 
 export type PokemonState = {
   pokemonList: PokemonWithCharacteristics[];
