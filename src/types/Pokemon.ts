@@ -28,6 +28,7 @@ export type Characteristics = {
 
 export type PokemonWithCharacteristics = Pokemon & {
   characteristics: Characteristics;
+  favorite: boolean;
   comment:
     | {
         name: string;

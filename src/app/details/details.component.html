@@ -1,20 +1,9 @@
-<div
-  class="modal fade"
-  id="detailsModal"
-  tabindex="-1"
-  aria-labelledby="datailsModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="datailsModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="datailsModalLabel">Detalhes</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="row-xs-0 modal-body gap-1 d-grid">
         <p>Altura: {{ (pokemonData?.height ?? 0) * 10 }} cm</p>
@@ -32,10 +21,7 @@
           </li>
         </ul>
         <div class="d-flex justify-content-center" *ngIf="pokemonData">
-          <img
-            src="{{ pokemonData.sprites.front_default }}"
-            class="img-fluid"
-          />
+          <img src="{{ pokemonData.sprites.front_default }}" class="img-fluid" />
           <img src="{{ pokemonData.sprites.back_default }}" class="img-fluid" />
           <img src="{{ pokemonData.sprites.front_shiny }}" class="img-fluid" />
           <img src="{{ pokemonData.sprites.back_shiny }}" class="img-fluid" />
@@ -44,7 +30,10 @@
     </div>
   </div>
 </div>
-<div class="d-flex justify-content-center mt-5">
+<div class="d-flex justify-content-center mt-5 " style="flex-direction: column; gap: 20px; align-items: center;">
+  <img src="../../assets/images/pokebola.png" width="120px" height="120px" />
+  <h1>Seja bem-vindo à Pokédex!</h1>
+  <p>Para começar, clique no botão abaixo para ver os detalhes de um pokémon.</p>
   <button type="button" class="btn btn-primary" (click)="openDetailsModal()">
     Abrir detalhes
   </button>

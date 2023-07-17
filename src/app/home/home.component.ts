@@ -85,6 +85,19 @@ export class HomeComponent {
     (<HTMLInputElement>document.getElementById('comment')).value = '';
     this.commentModal.hide();
   }
+  switchFavorite(pokemon: PokemonWithCharacteristics) {
+    this.pokemonList$.subscribe((pokemonList) => {
+      const list = pokemonList.map((e) => ({ ...e }));
+      const index = pokemonList.indexOf(pokemon as PokemonWithCharacteristics);
+      if (list[index].favorite) {
+        list[index].favorite = !list[index].favorite;
+      } else {
+        list[index].favorite = true;
+      }
+      console.log(list[index]);
+      this.store.dispatch(setPokemonList(list));
+    });
+  }
 
   handleSearchChange() {
     const value = (<HTMLInputElement>document.getElementById('searchInput'))

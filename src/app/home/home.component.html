@@ -48,8 +48,13 @@
                 [routerLink]="['/details']" [queryParams]="{ name: pokemon.name }">
                 Ver detalhes
               </button>
+
+
             </h5>
-            <p style="font-size: 14px; color: rgba(0, 0, 0, 0.591);" *ngIf="!pokemon.comment?.comment">Sem comentário
+            <p style="font-size: 14px; color: rgba(24, 4, 125, 0.734);" *ngIf="pokemon.favorite">Favorito 💙 </p>
+            <p style="font-size: 14px; color: rgba(71, 2, 2, 0.714);" *ngIf="!pokemon. favorite"> Não favorito 💔</p>
+            <p style="font-size: 14px; color: rgba(0, 0, 0, 0.591);" *ngIf="!pokemon.comment?.comment">Sem
+              comentário
               adicionado</p>
             <p *ngIf="pokemon.comment?.comment">
               Comentário adicionado: {{ pokemon.comment?.comment }}
@@ -68,10 +73,14 @@
                 data-target="#modalComentario" (click)="openCommentsModal(pokemon)">
                 Adicionar comentário
               </button>
-              <button type="button btn " class="btn btn-danger"
-                style="width: 120px; height: 40px; border-radius: 20px; font-size: 12px;"
+              <button type="button  " class="btn btn-danger"
+                style="width: 110px; height: 40px; border-radius: 20px; font-size: 12px;"
                 (click)="deleteComment(pokemon)">
                 Excluir comentário
+              </button>
+              <button type="button "
+                style="width: 60px; height: 40px; font-size: 12px; border-radius: 20px; color: white; " class="btn bg-info black
+               " (click)="switchFavorite(pokemon)"> Favoritar
               </button>
             </div>
           </div>

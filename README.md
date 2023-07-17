@@ -1,6 +1,6 @@
-# PokemonApp
+# Pokédex Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+Bem-vindo ao aplicativo Pokédex Angular! Este projeto é uma aplicação web construída usando Angular, permitindo aos usuários explorar vários Pokémon e seus detalhes. Com uma interface amigável, você pode pesquisar Pokémon, ver suas caracteristicas e muito mais. Pegue todos eles!
 
 ## Development server
 
